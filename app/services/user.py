@@ -24,8 +24,10 @@ def store_user(user_data: UserSchema):
         user_dict["password"] = get_password_hash(user_data.password)
         app_db.insert_one(user_dict)
         print({"Message": "User stored successfully!"})
+        return True
     else:
         print({"Message": "Username already in use..."})
+        return False
 
 
 def get_user(username: str):
